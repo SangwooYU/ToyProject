@@ -9,6 +9,8 @@ int main()
 { 
 	Info();
 	MainMenu();
+	std::cout << "Hello World!!";
+
 
 }
 

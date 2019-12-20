@@ -33,7 +33,8 @@ static void Info() {
 
 	std::cout << "----------------------------------------------------------------------------------------------------------------\n";
 	std::cout << "Hello. This program is Calculator which was developed by c++";
-	std::cout << "Developing Date : 2019/12/20 -   \n\n";
+	std::cout << "Developing Date : 2019/12/20 --- !!!!   \n\n";
+
 
 }
 static void MainMenu(){
