@@ -8,8 +8,19 @@
 
 #ifndef PCH_H
 #define PCH_H
+// The Define sentence for control key and 'q', OK 
+#define KUp 1
+#define KDown 2
+#define KLeft 3
+#define KRight 4
+#define KOk 5
+#define KQuit -1
+
 #include <iostream>
 #include <Windows.h>
+#include <conio.h>
+
+
 
 static void gotoxy(int x, int y) {
 	
@@ -21,7 +32,37 @@ static void gotoxy(int x, int y) {
 	
 }
 
+static int KeyControl() {
+	char temp = _getch();
+	if (temp == -32)
+		temp = _getch();
+	else if (temp == '\r');
+	else if (temp == 'q');
+	else return -1;
 
+	switch (temp) {
+	case 72: // ↑
+		temp = KUp;
+		break;
+	case 80: // ↓
+		temp = KDown;
+		break;
+	
+	case 75: // ←
+		return KLeft;
+		
+	case 77: // → 
+		return KRight;
+		
+	case '\r':
+		temp = KOk;
+		break;
+	case 'q':
+		temp = KQuit;
+		break;
+	}
+	return temp;
+}
 
 static void Info() {
 	std::cout << "\n\n";
@@ -32,18 +73,80 @@ static void Info() {
 	std::cout << "■■■■  ■      ■  ■■■■■   ■■■■  ■■■■■  ■■■■■ ■      ■     ■      ■■■■■ ■      ■ \n\n";
 
 	std::cout << "----------------------------------------------------------------------------------------------------------------\n";
-	std::cout << "Hello. This program is Calculator which was developed by c++";
-	std::cout << "Developing Date : 2019/12/20 --- !!!!   \n\n";
-
+	std::cout << "Hello. This program is Calculator which was developed by c++\n";
+	std::cout << "Developing Date : 2019/12/20 --- !!!!   \n";
+	std::cout << "Use ↑,↓ for selecting mode & 'q' is Quit Key , Enter Key is OK Key\n\n";
 
 }
-static void MainMenu(){
+static int MainMenu(){
+	int Start_num;
+	int Mode_PosX = 3;
+	int Mode_PosY = 16;
 	std::cout << "\t  ======= MAIN Menu ====== ";
-	gotoxy(3, 15); std::cout << "☞ \t  1. Normal Calculator";
-	gotoxy(3, 16); std::cout <<  " \t  2. Engineer Calculator";
-	gotoxy(3, 17); std::cout <<  " \t  3. Developer Calculator\n\n";
+	gotoxy(Mode_PosX, Mode_PosY); std::cout << "☞" << " \t  1. Normal Calculator";
+	gotoxy(Mode_PosX, Mode_PosY+1); std::cout <<  " \t  2. Engineer Calculator";
+	gotoxy(Mode_PosX, Mode_PosY + 2); std::cout <<  " \t  3. Developer Calculator\n\n";
 
 	std::cout << "\t※ Select Mode Using rudder key then, Press Enter \n";
+
+
+	while (1) {
+		int n = 0;
+		n = KeyControl();
+		
+		//std::cout << "출력되는 값은 " << n << "\n";
+		
+		
+		switch (n) {
+		case KUp:
+			if (Mode_PosY > 16)
+			{
+				gotoxy(Mode_PosX, Mode_PosY);
+				std::cout << " ";
+				gotoxy(Mode_PosX, --Mode_PosY);
+				std::cout << "☞";
+			}
+			break;
+		case KDown:
+			if (Mode_PosY <18)
+			{
+				gotoxy(Mode_PosX, Mode_PosY);
+				std::cout << " ";
+				gotoxy(Mode_PosX, ++Mode_PosY);
+				std::cout << "☞";
+			}
+			break;
+		case KLeft:
+			if (Mode_PosY > 16)
+			{
+				gotoxy(Mode_PosX, Mode_PosY);
+				std::cout << " ";
+				gotoxy(Mode_PosX, --Mode_PosY);
+				std::cout << "☞";
+			}
+			break;
+		case KRight:
+			if (Mode_PosY < 18)
+			{
+				gotoxy(Mode_PosX, Mode_PosY);
+				std::cout << " ";
+				gotoxy(Mode_PosX, ++Mode_PosY);
+				std::cout << "☞";
+			}
+			break;
+		case KOk:
+			return Mode_PosY-16;
+
+		case KQuit:
+		return -1;
+
+			}
+	
+	}
+
+
+
+	return 0;
 }
 
 
