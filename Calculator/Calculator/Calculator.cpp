@@ -6,11 +6,22 @@
 
 
 int main()
-{ 
+{
+	std::string equation;
+	int mode = -1;
 	Info();
-	MainMenu();
-
-
+	mode = MainMenu();
+	Calc cal(mode);
+	if (cal.num == 0)
+	{
+		return -1;
+	}
+	while (1) {
+		std::cout << " > "; 
+		getline(std::cin, equation);
+		if (equation.compare("q") == 0)
+			return KQuit;
+	}
 
 }
 

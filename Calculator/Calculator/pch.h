@@ -19,8 +19,8 @@
 #include <iostream>
 #include <Windows.h>
 #include <conio.h>
-
-
+#include <stdlib.h>
+#include <string>
 
 static void gotoxy(int x, int y) {
 	
@@ -135,7 +135,9 @@ static int MainMenu(){
 			}
 			break;
 		case KOk:
-			return Mode_PosY-16;
+			gotoxy(Mode_PosX, Mode_PosY + 4);
+		//	std::cout << Mode_PosY - 16 << " \n";
+			return Mode_PosY-16; // mode 선택에 따라 0,1,2 리턴 됨.
 
 		case KQuit:
 		return -1;
@@ -143,23 +145,43 @@ static int MainMenu(){
 			}
 	
 	}
-
-
-
-	return 0;
 }
 
 
-class NormCalc {
+class Calc{
+public:
+	int num = 1;
+	Calc(int n){
+		system("cls");
+		if (n < 0 || n >2) {
+			std::cout << "This Mode is Wrong \n";
+			num = 0;
+		}
+		std::cout << "Hello User This is ";
+		
+		switch (n) {
+		case 0:
+				std::cout << "General Calculator! \n";
+				break;
+		case 1:
+			std::cout << "Engineer Calculator! \n";
+				break;
+		case 2:
+			std::cout << "Developer Calculator! \n";
+			break;
+		}
+		std::cout << "(If you wanna quit, press \'q\') \n\n";
+	}
 	
+
 };
 
-class EnginCalc {
-
+class EnginCalc
+{	
 };
 
 class DevCalc {
-
+	
 };
 
 
