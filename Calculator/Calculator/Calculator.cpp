@@ -3,11 +3,12 @@
 
 #include "pch.h"
 
-
+using namespace std;
 
 int main()
 {
 	std::string equation;
+	std::string * scaning;
 	int mode = -1;
 	Info();
 	mode = MainMenu();
@@ -21,6 +22,21 @@ int main()
 		getline(std::cin, equation);
 		if (equation.compare("q") == 0)
 			return KQuit;
+		std::istringstream iss(equation);
+		
+		
+
+
+		while (iss)
+		{
+			std::string sub;
+			iss >> sub;
+			if (sub.compare("\0") == 0)
+				break;
+			else
+				std::cout << "Substring: " << sub << std::endl;
+
+		}
 	}
 
 }
