@@ -16,13 +16,11 @@
 #define KOk 5
 #define KQuit -1
 
-
 #include <iostream>
 #include <Windows.h>
 #include <conio.h>
 #include <stdlib.h>
 #include <string>
-#include <sstream>
 
 static void gotoxy(int x, int y) {
 	
