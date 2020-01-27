@@ -2,11 +2,42 @@
 //
 
 #include "pch.h"
+#include <iostream>
+#include <sstream>
+#include<stack>
+#include<string>
 
+using namespace std;
 
 
 int main()
 {
+
+	stack<string> S;
+	S.push("(");
+	S.push("452");
+	S.push("*");
+	S.push("244");
+	S.push(")");
+
+	while (S.empty() == false) {
+		string fa = S.top();
+		
+		S.pop();
+		if (fa.compare("(") == 0)
+			continue;
+		else if(fa.compare(")") == 0)
+			continue;
+
+		cout << fa << " ";
+		
+	}
+
+
+	cout << endl;
+	cout << "기록 끝" << endl;
+
+
 	std::string equation;
 	int mode = -1;
 	Info();
@@ -21,6 +52,20 @@ int main()
 		getline(std::cin, equation);
 		if (equation.compare("q") == 0)
 			return KQuit;
+	
+		stringstream ss(equation);
+		string v;
+
+		
+
+		// 계산 부분 구현 내용
+		/*
+		while ((ss >> v)) {
+			
+			//strcmp()
+			//cout << v << endl;
+		}
+		*/
 	}
 
 }

@@ -1,4 +1,2 @@
-﻿  pch.cpp
-c:\users\yu sang woo\source\repos\sangwooyu\toyproject\calculator\calculator\pch.h(82): warning C4101: 'Start_num' :참조되지 않은 지역 변수입니다.
-  Calculator.cpp
+﻿  Calculator.cpp
   Calculator.vcxproj -> C:\Users\YU SANG WOO\source\repos\SangwooYU\ToyProject\Calculator\Debug\Calculator.exe
